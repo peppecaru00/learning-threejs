@@ -20,3 +20,29 @@
   font-size: 4rem;
   z-index: 9999
 }
+
+h1{
+  font-size: 10rem;
+  letter-spacing: -8px;
+  font-weight: 900;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+p{
+  font-size: 1.5rem;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.homepage-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}

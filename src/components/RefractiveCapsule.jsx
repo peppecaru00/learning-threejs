@@ -1,8 +1,11 @@
-import { MeshTransmissionMaterial, Scroll } from '@react-three/drei';
+import { MeshTransmissionMaterial} from '@react-three/drei';
+import { useFrame } from '@react-three/fiber'
+import { useRef } from 'react'
 
 function RefractiveCapsule() {
+
     return (
-        <mesh rotation={[180, 90, 90]}>
+        <mesh scale={3} position={[5,0,-10]} rotation={[0, 0, 0]}>
             <capsuleGeometry rotateX={90} args={[1, 2, 12, 64]} />
             <MeshTransmissionMaterial
                 color="#f5f5f5"

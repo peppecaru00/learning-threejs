@@ -8,6 +8,16 @@ function Homepage() {
 
       <p>Goditi qualche bel content. Cosí sei content</p>
     </div>
+    <div className="homepage-content">
+      <h1>Ciao Amico</h1>
+
+      <p>Goditi qualche bel content. Cosí sei content</p>
+    </div>
+    <div className="homepage-content">
+      <h1>Ciao Amico</h1>
+
+      <p>Goditi qualche bel content. Cosí sei content</p>
+    </div>
     </Scroll>
   );
 }

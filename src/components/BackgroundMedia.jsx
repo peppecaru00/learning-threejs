@@ -38,7 +38,7 @@ export default function BackgroundMedia({mediaUrl, aspectRatio, position = [0, 0
       // Move background based on scroll position
       meshRef.current.position.set(
         position[0], 
-        position[1] + scroll.offset * 1, 
+        position[1] + scroll.offset * 10, 
         position[2]
       )
     }
@@ -47,7 +47,7 @@ export default function BackgroundMedia({mediaUrl, aspectRatio, position = [0, 0
   return (
     <Scroll>
       <mesh ref={meshRef} position={position} scale={scale}>
-        <planeGeometry args={[1, 1]} />
+        <planeGeometry args={[2, 2]} />
         <meshBasicMaterial reflectivity={0} map={texture} toneMapped={false} />
       </mesh>
     </Scroll>
