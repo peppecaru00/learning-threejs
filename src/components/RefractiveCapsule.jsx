@@ -2,7 +2,7 @@ import { MeshTransmissionMaterial, Scroll } from '@react-three/drei';
 
 function RefractiveCapsule() {
     return (
-        <mesh rotation={[0, 0, 0]}>
+        <mesh rotation={[180, 90, 90]}>
             <capsuleGeometry rotateX={90} args={[1, 2, 12, 64]} />
             <MeshTransmissionMaterial
                 color="#f5f5f5"

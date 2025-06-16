@@ -5,7 +5,7 @@ import { state } from '../store'
 import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
 
-export default function BackgroundMedia({mediaUrl}) {
+export default function BackgroundMedia({mediaUrl, aspectRatio, position = [0, 0, -2.5]}) {
   const { viewport } = useThree()
   const { background } = useSnapshot(state)
   
@@ -21,7 +21,7 @@ export default function BackgroundMedia({mediaUrl}) {
     : useTexture(`/${background}.jpg`)
   
   // Set the aspect ratio of your video/image here
-  const mediaAspect = 2/1 // Change this to match your actual video aspect ratio
+  const mediaAspect = aspectRatio // Change this to match your actual video aspect ratio
   const viewportAspect = viewport.width / viewport.height
   
   // Calculate scale for cover behavior (no stretching)
@@ -33,18 +33,20 @@ export default function BackgroundMedia({mediaUrl}) {
     // Viewport is taller - scale by height (width will be cropped)
     scale = [viewport.height * mediaAspect, viewport.height, 1]
   }
-
   useFrame(() => {
     if (meshRef.current && scroll) {
       // Move background based on scroll position
-      meshRef.current.position.y = scroll.offset * 1 // Adjust multiplier for speed
-      meshRef.current.rotation.z = scroll.offset * Math.PI * 0.1
+      meshRef.current.position.set(
+        position[0], 
+        position[1] + scroll.offset * 1, 
+        position[2]
+      )
     }
   })
 
   return (
     <Scroll>
-      <mesh ref={meshRef} position={[0, 0, -2.5]} scale={scale}>
+      <mesh ref={meshRef} position={position} scale={scale}>
         <planeGeometry args={[1, 1]} />
         <meshBasicMaterial reflectivity={0} map={texture} toneMapped={false} />
       </mesh>

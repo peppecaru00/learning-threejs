@@ -1,9 +1,11 @@
 import { React, Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import './App.css'
-import { Environment, MeshTransmissionMaterial, ScrollControls } from '@react-three/drei'
+import { Environment, MeshTransmissionMaterial, ScrollControls, OrbitControls } from '@react-three/drei'
 import BackgroundMedia from './components/BackgroundMedia'
 import RefractiveCapsule from './components/RefractiveCapsule'
+import CustomCursor from './components/CustomCursor'
+import Homepage from './components/Homepage'
 
 function App() {
   return (
@@ -17,10 +19,13 @@ function App() {
           }}>
 
           <Suspense fallback={null}>
-            <RefractiveCapsule />
             <ScrollControls pages={3} damping={0.1}>
-              <BackgroundMedia mediaUrl={'./latest_video.mkv'} />
+              <BackgroundMedia mediaUrl={'./latest_video.mkv'} aspectRatio={2/1} position={[0, 0, -2]} />
+              <BackgroundMedia mediaUrl={'./test_conversione.mp4'} aspectRatio={16/9} position={[0, -10, -2]} />
+              <Homepage/>
             </ScrollControls>
+            <RefractiveCapsule />
+            <OrbitControls />
           </Suspense>
         </Canvas>
       </div>
