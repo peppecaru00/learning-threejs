@@ -1,0 +1,17 @@
+#root {
+  margin: 0 auto;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.canvas-container{
+  display: flex;
+  position: fixed;
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
