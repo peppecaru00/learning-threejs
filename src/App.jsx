@@ -21,9 +21,11 @@ function App() {
             
           <Suspense fallback={null}>
             <ScrollControls pages={3} damping={0.1}>
-             <Text3D/>
+             <Text3D scale={1.5} text="This" position={[2,-1,1]} />
+             <Text3D scale={1.5} text="is my" position={[-4,-4,-2]} />
+             <Text3D scale={1.5} text="PORTFOLIO." position={[0,-8,1]} />
               <BackgroundMedia mediaUrl={'./latest_video.mkv'} aspectRatio={2/1} position={[0, 0, -10]} />
-              <BackgroundMedia mediaUrl={'./test_conversione.mp4'} aspectRatio={16/9} position={[0, -22.2, -10]} />
+              <BackgroundMedia mediaUrl={'./test_conversione.mp4'} aspectRatio={16/9} position={[0, -20, -10]} />
             </ScrollControls>
             <RefractiveCapsule/>
           </Suspense>
