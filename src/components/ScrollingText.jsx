@@ -21,7 +21,7 @@ function ScrollingText({ text, position, rotation, scale}) {
                 rotation={rotation}
                 position={position}
                 letterSpacing={-.05}
-                font='fonts\mabry-pro\MabryPro-Black.ttf'
+                font='fonts/mabry-pro/MabryPro-Black.ttf'
                 color={'#f5f5f5'}
             >
                 {text}
