@@ -1,9 +1,9 @@
-import { Scroll, Text } from '@react-three/drei';
+import { Text } from '@react-three/drei';
 
-function FixedText3D({ text, position, scale, }) {
+function FixedText({ text, position, scale, }) {
     
     return (
-    <div className="scrolling-text">
+    <div className="fixed-text">
         <Text scale={scale} position={position} letterSpacing={-.05} font='public\fonts\mabry-pro\MabryPro-Black.ttf' >
             {text}
         </Text>
@@ -11,4 +11,4 @@ function FixedText3D({ text, position, scale, }) {
 
     )
 }
-export default FixedText3D;
+export default FixedText;

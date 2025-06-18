@@ -2,9 +2,9 @@ import { React, Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import './App.css'
 import { ScrollControls} from '@react-three/drei'
-import BackgroundMedia from './components/BackgroundMedia'
 
 import ScrollingText from './components/ScrollingText'
+import MainCarousel from './components/MainCarousel'
 
 
 function App() {
@@ -12,18 +12,22 @@ function App() {
       <div className="canvas-container">
         <Canvas
           camera={{
-            position: [0, 0, 6],
+            position: [-4, 0, 6],
+            rotation: [0, - Math.PI / 8, 0],
             fov: 90,
             zoom: 2
           }}>
-
+            
           <Suspense fallback={null}>
             <ScrollControls pages={3} damping={0.1}>
-              <ScrollingText scale={1.5} text="This" position={[2, -1, 1]} />
-              <ScrollingText scale={1.5} text="is my" position={[-4, -4, -2]} />
+
+              <ScrollingText scale={1.5} text="Hi mate," position={[-3, 1, 1]} />
+              <ScrollingText scale={1.5} text="this" position={[1, -1, 1]} />
+              <ScrollingText scale={1.5} text="is my new" position={[-4, -4, -2]} />
               <ScrollingText scale={2} text="PORTFOLIO." position={[1.5, -10, -1]} />
-              <BackgroundMedia mediaUrl={'/latest_video.mkv'} aspectRatio={2 / 1} rotation={[0,Math.PI/8,0]} position={[6, 0, -10]} scaleFactor={.5} />
-              <BackgroundMedia mediaUrl={'/test_conversione.mp4'} aspectRatio={16 / 9} rotation={[0,Math.PI/8,0]} position={[6, -13, -10]} scaleFactor={.5} />
+              <ScrollingText scale={.5} text="( made in react/fiber)" position={[1.5, -12.5, 1]} />
+
+              <MainCarousel />
             </ScrollControls>
           </Suspense>
         </Canvas>

@@ -3,7 +3,7 @@ import { basicAnimations } from '../animations/Animations.js';
 import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 
-function ScrollingText({ text, position, scale}) {
+function ScrollingText({ text, position, rotation, scale}) {
     gsap.registerPlugin();
 
     const textRef = useRef()
@@ -18,7 +18,7 @@ function ScrollingText({ text, position, scale}) {
         <Scroll>
             <Text ref={textRef}
                 scale={scale}
-                rotation={[0, Math.PI / 8, 0]}
+                rotation={rotation}
                 position={position}
                 letterSpacing={-.05}
                 font='fonts\mabry-pro\MabryPro-Black.ttf'
