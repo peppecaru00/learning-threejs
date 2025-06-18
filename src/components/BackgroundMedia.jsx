@@ -5,7 +5,7 @@ import { state } from '../store'
 import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
 
-export default function BackgroundMedia({mediaUrl, aspectRatio, position, scaleFactor}) {
+export default function BackgroundMedia({mediaUrl, aspectRatio, position, rotation, scaleFactor}) {
   const { viewport } = useThree()
   const { background } = useSnapshot(state)
   
@@ -24,7 +24,6 @@ export default function BackgroundMedia({mediaUrl, aspectRatio, position, scaleF
   
   // Set the aspect ratio of your video/image here
   const mediaAspect = aspectRatio // Change this to match your actual video aspect ratio
-  const viewportAspect = viewport.width / viewport.height
   
   let scale = [(viewport.height*scaleFactor) * mediaAspect, (viewport.height*scaleFactor), 1]
 
@@ -41,7 +40,7 @@ export default function BackgroundMedia({mediaUrl, aspectRatio, position, scaleF
 
   return (
     <Scroll>
-      <mesh ref={meshRef} position={position} scale={scale}>
+      <mesh ref={meshRef} position={position} rotation={rotation} scale={scale}>
         <planeGeometry args={[2, 2]} />
         <meshBasicMaterial reflectivity={0} map={texture} toneMapped={false} />
       </mesh>
