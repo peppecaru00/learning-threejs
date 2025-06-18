@@ -5,34 +5,29 @@ import { state } from '../store'
 import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
 
-export default function BackgroundMedia({mediaUrl, aspectRatio, position = [0, 0, -2.5]}) {
+export default function BackgroundMedia({mediaUrl, aspectRatio, position, scaleFactor}) {
   const { viewport } = useThree()
   const { background } = useSnapshot(state)
   
   //servone per fare scrollare gli elementi singoli
   const meshRef = useRef()
   const scroll = useScroll()
+  // Add debugging
+  console.log('BackgroundMedia - mediaUrl:', mediaUrl, 'aspectRatio:', aspectRatio)
   
-  const isVideo = ["video1", "video2", "video3"].includes(background)
+  const isVideo = mediaUrl?.endsWith('.mp4') || mediaUrl?.endsWith('.mkv') || mediaUrl?.endsWith('.webm')
   
   // Load texture based on type
   const texture = isVideo 
     ? useVideoTexture(mediaUrl, { start: true, muted: true, loop: true })
-    : useTexture(`/${background}.jpg`)
+    : useTexture(mediaUrl)  // Use mediaUrl directly instead of background
   
   // Set the aspect ratio of your video/image here
   const mediaAspect = aspectRatio // Change this to match your actual video aspect ratio
   const viewportAspect = viewport.width / viewport.height
   
-  // Calculate scale for cover behavior (no stretching)
-  let scale
-  if (viewportAspect > mediaAspect) {
-    // Viewport is wider - scale by width (height will be cropped)
-    scale = [viewport.width, viewport.width / mediaAspect, 1]
-  } else {
-    // Viewport is taller - scale by height (width will be cropped)
-    scale = [viewport.height * mediaAspect, viewport.height, 1]
-  }
+  let scale = [(viewport.height*scaleFactor) * mediaAspect, (viewport.height*scaleFactor), 1]
+
   useFrame(() => {
     if (meshRef.current && scroll) {
       // Move background based on scroll position
