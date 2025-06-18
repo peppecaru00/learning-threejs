@@ -1,11 +1,18 @@
 import { useThree } from '@react-three/fiber'
-import { Scroll, useTexture, useVideoTexture, useScroll} from '@react-three/drei'
+import { Scroll, useTexture, useVideoTexture, useScroll } from '@react-three/drei'
 import { useSnapshot } from 'valtio'
 import { state } from '../store'
 import { useFrame } from '@react-three/fiber'
 import { useRef } from 'react'
 
-export default function BackgroundMedia({ mediaUrl, aspectRatio, position, rotation, scaleFactor, fixedWidth }) {
+export default function BackgroundMedia({ mediaUrl,
+  aspectRatio,
+  position,
+  rotation,
+  scaleFactor,
+  fixedWidth
+}) {
+
   const { viewport } = useThree()
   const { background } = useSnapshot(state)
 
@@ -49,9 +56,20 @@ export default function BackgroundMedia({ mediaUrl, aspectRatio, position, rotat
   return (
     <Scroll>
       <group>
-        <mesh ref={meshRef} position={position} rotation={rotation} scale={scale}>
-          <planeGeometry args={[2, 2]} />
-          <meshBasicMaterial reflectivity={0} map={texture} toneMapped={false} />
+
+        <mesh ref={meshRef}
+          position={position}
+          rotation={rotation}
+          scale={scale}>
+
+          <planeGeometry
+            args={[2, 2]} />
+
+          <meshBasicMaterial
+            reflectivity={0}
+            map={texture}
+            toneMapped={false} />
+
         </mesh>
       </group>
     </Scroll>
